@@ -13,8 +13,8 @@ from textblob.exceptions import NotTranslated
 import re
 import numpy as np
 import nltk
-nltk.download('punkt')
-
+nltk.download('punkt_tab')
+import igraph as ig
 class limpieza_regex:
     """
     Clase para realizar limpieza de texto, que incluye la eliminación de números, caracteres especiales,
