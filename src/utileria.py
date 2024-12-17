@@ -1,16 +1,11 @@
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
-import re
-from unidecode import unidecode
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
 from textblob import TextBlob
 from textblob.exceptions import NotTranslated
-import re
 import numpy as np
 import nltk
 nltk.download('punkt_tab')
-import igraph as ig
+
     
 class sentence_similarity:
     """
