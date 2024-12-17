@@ -1,4 +1,3 @@
-Aquí tienes una propuesta de **README.md** para tu repositorio de **Análisis_de_texto** en GitHub, basado en la estructura mostrada en la imagen:
 
 ---
 
@@ -13,8 +12,8 @@ Este repositorio contiene un proyecto para realizar análisis de texto con técn
 ```
 Análisis_de_texto/
 │
-├── input/             # Contiene los archivos de entrada (datos sin procesar)
-│   └── analisis complejos
+├── input/             # Contiene los archivos de entrada (datos sin procesar o demás archivos necesarios)
+│   └── csv, txt, etc. 
 │
 ├── notebook/          # Notebooks en Jupyter para análisis y ejecución del flujo principal
 │   └── final.ipynb
@@ -44,7 +43,7 @@ pip install seaborn sentence-transformers scikit-learn textblob numpy nltk matpl
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/<usuario>/Análisis_de_texto.git
+   git clone https://github.com/briveros23/Análisis_de_texto.git
    cd Análisis_de_texto
    ```
 
@@ -73,7 +72,7 @@ Abre el notebook en **Jupyter** y ejecuta las celdas paso a paso. Los resultados
 ## 👨‍💻 Autor
 
 - **Nombre del autor**: briveros23  
-- **Fecha de inicio**: *(Agregar fecha si es relevante)*
+- **Fecha de inicio**: *17 de diciembre del 2024*
 
 ---
 
@@ -84,10 +83,3 @@ Abre el notebook en **Jupyter** y ejecuta las celdas paso a paso. Los resultados
 
 ---
 
-## 🔗 Licencia
-
-Este proyecto está licenciado bajo la **MIT License**. Para más información, consulta el archivo LICENSE.
-
----
-
-Esta estructura proporciona una documentación clara y organizada para cualquier usuario que desee explorar o utilizar tu proyecto.
