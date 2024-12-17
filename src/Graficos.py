@@ -50,12 +50,14 @@ class graficos():
     plt.show()
 
   
-  def generar_wordcloud(lista_oraciones):
+  def generar_wordcloud(lista_oraciones, colormap="viridis"):
     """
     Genera un WordCloud basado en la frecuencia de palabras a partir de una lista de oraciones.
+    Permite cambiar el color de las palabras usando un colormap.
 
     Parámetros:
     - lista_oraciones: lista de strings, cada string es una oración.
+    - colormap: str (opcional), nombre de la paleta de colores de matplotlib. Ejemplo: 'viridis', 'plasma', 'inferno'.
     """
     # 1. Unir todas las oraciones en un solo texto
     texto_completo = " ".join(lista_oraciones)
@@ -64,8 +66,8 @@ class graficos():
     palabras = texto_completo.split()
     frecuencia_palabras = Counter(palabras)
     
-    # 3. Crear el objeto WordCloud
-    wordcloud = WordCloud(width=800, height=400, background_color="white").generate_from_frequencies(frecuencia_palabras)
+    # 3. Crear el objeto WordCloud con la paleta de colores definida
+    wordcloud = WordCloud(width=800, height=400, background_color="white", colormap=colormap).generate_from_frequencies(frecuencia_palabras)
     
     # 4. Mostrar el WordCloud
     plt.figure(figsize=(10, 6))
