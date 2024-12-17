@@ -1,0 +1,9 @@
+seaborn
+sentence-transformers
+scikit-learn
+textblob
+numpy
+nltk
+matplotlib
+wordcloud
+python-igraph
