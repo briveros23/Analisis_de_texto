@@ -5,8 +5,14 @@ from textblob.exceptions import NotTranslated
 import numpy as np
 import nltk
 nltk.download('punkt_tab')
+from sklearn.metrics import silhouette_score
 
     
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+
 class sentence_similarity:
     """
     Clase para calcular la similitud entre sentencias usando embeddings y PCA para reducción de dimensionalidad,
@@ -37,7 +43,41 @@ class sentence_similarity:
 
     def k_means(self, clusters):
         """Aplica K-Means a los componentes principales."""
-        return KMeans(n_clusters=clusters).fit(self.component)
+        return KMeans(n_clusters=clusters, random_state=42, n_init=10).fit(self.component)
+
+    def silhouette_method(X, k_min=2, k_max=10):
+        silhouette_scores = []
+        k_values = range(k_min, k_max + 1)
+
+        for k in k_values:
+            kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+            labels = kmeans.fit_predict(X)
+            silhouette_scores.append(silhouette_score(X, labels))
+
+        plt.figure(figsize=(8, 5))
+        plt.plot(k_values, silhouette_scores, marker='o', linestyle='-')
+        plt.xlabel("Número de Clústeres (k)")
+        plt.ylabel("Coeficiente de Silueta")
+        plt.title("Método de la Silueta para Selección de k")
+        plt.show()
+
+    def silhouette_method(self, k_min=2, k_max=10):
+        """Aplica el método de la silueta para evaluar la calidad de los clústeres."""
+        silhouette_scores = []
+        k_values = range(k_min, k_max + 1)
+
+        for k in k_values:
+            kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+            labels = kmeans.fit_predict(self.component)
+            silhouette_scores.append(silhouette_score(self.component, labels))
+
+        # Gráfica del coeficiente de silueta
+        plt.figure(figsize=(8, 5))
+        plt.plot(k_values, silhouette_scores, marker='o', linestyle='-')
+        plt.xlabel("Número de Clústeres (k)")
+        plt.ylabel("Coeficiente de Silueta")
+        plt.title("Método de la Silueta para Selección de k")
+        plt.show()
 
   
 

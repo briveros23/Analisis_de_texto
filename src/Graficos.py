@@ -5,21 +5,23 @@ from collections import Counter
 
 class graficos():
 
-  def plot_column_combinations(coordinates, colors=None, labels=None):
+  def plot_column_combinations(coordinates, max_dim=None, colors=None, labels=None):
     """
-    Genera gráficos combinando las columnas de un array de coordenadas.
+    Genera gráficos combinando las columnas de un array de coordenadas hasta una dimensión máxima especificada.
     Puede pintar los puntos usando un vector de colores y agregar etiquetas a los puntos.
 
     Parámetros:
     - coordinates: np.ndarray (n x m) donde n son puntos y m son dimensiones.
+    - max_dim: int (opcional) indica hasta qué dimensión incluir en las combinaciones.
     - colors: List o np.ndarray (opcional) para colorear los puntos.
     - labels: List o np.ndarray (opcional) con nombres o etiquetas para los puntos.
 
     Retorna:
-    - Gráficos de las combinaciones posibles de columnas.
+    - Gráficos de las combinaciones posibles de columnas hasta la dimensión especificada.
     """
     num_cols = coordinates.shape[1]
-    col_combinations = list(combinations(range(num_cols), 2))  # Combinaciones de columnas
+    max_dim = min(max_dim, num_cols) if max_dim else num_cols  # Asegurar que max_dim no exceda las columnas disponibles
+    col_combinations = list(combinations(range(max_dim), 2))  # Combinaciones de columnas hasta la dimensión máxima
     
     # Configurar los subgráficos
     n_combinations = len(col_combinations)
@@ -41,9 +43,9 @@ class graficos():
             for i, label in enumerate(labels):
                 ax.text(coordinates[i, col1], coordinates[i, col2], str(label), fontsize=8, ha='right', va='bottom')
         
-        ax.set_title(f"Plano {col1+1} vs Plano {col2+1}")
-        ax.set_xlabel(f"Plano {col1+1}")
-        ax.set_ylabel(f"Plano {col2+1}")
+        ax.set_title(f"Dimensión {col1+1} vs Dimensión {col2+1}")
+        ax.set_xlabel(f"Dimensión {col1+1}")
+        ax.set_ylabel(f"Dimensión {col2+1}")
         ax.grid(True)
     
     plt.tight_layout()
