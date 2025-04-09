@@ -21,6 +21,7 @@ class limpieza_regex:
         """
         textos_limpios = []
         for texto in sentencias:
+            texto = str(texto)  # Asegurarse de que el texto sea una cadena
             texto = texto.lower()  # Minimizar texto
             texto = re.sub(r'\b\w*\d\w*\b', '', texto)  # Eliminar números
             texto = re.sub(r'[^\w\s]', '', texto)  # Eliminar caracteres especiales
