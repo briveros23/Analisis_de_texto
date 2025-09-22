@@ -3,7 +3,11 @@ from itertools import combinations
 from wordcloud import WordCloud
 from collections import Counter
 
-def plot_column_combinations(coordinates, max_dim=None, colors=None, labels=None):
+
+
+class graficos():
+
+  def plot_column_combinations(coordinates, max_dim=None, colors=None, labels=None):
     """
     Genera gráficos combinando las columnas de un array de coordenadas hasta una dimensión máxima especificada.
     Puede pintar los puntos usando un vector de colores y agregar etiquetas a los puntos.
@@ -42,4 +46,30 @@ def plot_column_combinations(coordinates, max_dim=None, colors=None, labels=None
         ax.grid(True)
     
     plt.tight_layout()
+    plt.show()
+  
+  def generar_wordcloud(lista_oraciones, colormap="viridis"):
+    """
+    Genera un WordCloud basado en la frecuencia de palabras a partir de una lista de oraciones.
+    Permite cambiar el color de las palabras usando un colormap.
+
+    Parámetros:
+    - lista_oraciones: lista de strings, cada string es una oración.
+    - colormap: str (opcional), nombre de la paleta de colores de matplotlib. Ejemplo: 'viridis', 'plasma', 'inferno'.
+    """
+    # 1. Unir todas las oraciones en un solo texto
+    texto_completo = " ".join(lista_oraciones)
+    
+    # 2. Tokenizar y contar la frecuencia de palabras
+    palabras = texto_completo.split()
+    frecuencia_palabras = Counter(palabras)
+    
+    # 3. Crear el objeto WordCloud con la paleta de colores definida
+    wordcloud = WordCloud(width=800, height=400, background_color="white", colormap=colormap).generate_from_frequencies(frecuencia_palabras)
+    
+    # 4. Mostrar el WordCloud
+    plt.figure(figsize=(10, 6))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    plt.title("Nube de Palabras")
     plt.show()
